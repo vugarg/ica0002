@@ -1,0 +1,17 @@
+---
+  - name: Creating linux users
+    user:
+      name: juri
+      name: roman
+
+  - name: SSH public key juri
+    authorized_key:
+      user: juri
+      state: present
+      key: https://github.com/hudolejev.keys
+
+  - name: SSH public key roman
+    authorized_key:
+      user: roman
+      state: present
+      key: https://github.com/romankuchin.keys
