@@ -1,0 +1,21 @@
+---
+  - name: Install uWSGI packages
+    apt:
+      pkg:
+      - uwsgi
+      - uwsgi-plugin-python3
+      
+  - name: Start uWSGI
+    service:
+      name: uwsgi
+      state: started
+      
+  - name: copy the uwsgi config file
+    copy:
+      src: /Users/home/Documents/ica0002/roles/uwsgi/files/agama.ini
+      dest: /etc/uwsgi/apps-enabled/agama.ini
+    become: yes
+    notify: restart uwsgi
+      
+    
+

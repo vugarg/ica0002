@@ -3,3 +3,6 @@ vugarg-1 ansible_host=193.40.156.86 ansible_port=6422 ansible_user=ubuntu ansibl
 
 [web_servers]
 vugarg-1
+
+[app_servers]
+vugarg-1
