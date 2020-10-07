@@ -14,5 +14,3 @@
       dest: /etc/nginx/sites-enabled/default
     become: yes
     notify: restart nginx
-      
-    

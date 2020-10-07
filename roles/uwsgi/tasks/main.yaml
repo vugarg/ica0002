@@ -4,6 +4,7 @@
       pkg:
       - uwsgi
       - uwsgi-plugin-python3
+      - python3-pymysql
       
   - name: Start uWSGI
     service:
@@ -11,8 +12,8 @@
       state: started
       
   - name: copy the uwsgi config file
-    copy:
-      src: /Users/home/Documents/ica0002/roles/uwsgi/files/agama.ini
+    template:
+      src: /Users/home/Documents/ica0002/roles/uwsgi/templates/agama.ini
       dest: /etc/uwsgi/apps-enabled/agama.ini
     become: yes
     notify: restart uwsgi

@@ -1,0 +1,35 @@
+---
+- name: Install MySQL server
+  apt: 
+    name: mysql-server
+    update_cache: yes
+
+- name: Install Pymsql
+  apt: 
+    pkg:
+    - python3-pymysql
+
+- name: Start MySQL server
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+
+- name: Copy MySQL config file and restart MySQL server
+  copy: 
+    src: /Users/home/Documents/ica0002/roles/mysql/files/override.cnf
+    dest: /etc/mysql/mysql.conf.d/override.cnf
+  notify: restart mysql
+
+- name: MySQL database
+  mysql_db:
+    name: "{{ mysql_database }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Create database user with limited privileges
+  mysql_user: 
+    name: "{{ mysql_user }}"
+    host: "%"
+    password: "{{ mysql_password }}"
+    priv: "{{ mysql_database }}.*:ALL"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
