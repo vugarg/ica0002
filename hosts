@@ -1,6 +1,6 @@
 
-vugarg-1 ansible_host=193.40.156.86 ansible_port=6422 ansible_user=ubuntu ansible_python_interpreter=python3
-vugarg-2 ansible_host=193.40.156.86 ansible_port=5922 ansible_user=ubuntu ansible_python_interpreter=python3
+vugarg-1 ansible_host=193.40.156.86 ansible_port=13822 ansible_user=ubuntu ansible_python_interpreter=python3
+vugarg-2 ansible_host=193.40.156.86 ansible_port=9522 ansible_user=ubuntu ansible_python_interpreter=python3
 
 [app_servers]
 vugarg-1

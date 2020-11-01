@@ -1,0 +1,14 @@
+---
+  - name: DNS Server
+    hosts: db_servers
+    roles:
+      - bind
+    become: yes
+
+  - name: Update your VMs DNS settings
+    hosts: app_servers
+    become: yes
+    tasks:
+      - template:
+          src: /Users/home/Documents/ica0002/roles/bind/templates/resolv.conf
+          dest: /etc/resolv.conf

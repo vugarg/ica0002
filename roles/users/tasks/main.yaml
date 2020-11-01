@@ -1,8 +1,8 @@
 ---
   - name: Creating linux users
     user:
-      name: roman
       name: juri
+      name: roman
 
   - name: SSH public key juri
     authorized_key:

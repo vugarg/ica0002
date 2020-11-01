@@ -1,0 +1,16 @@
+---
+  - name: Install bind
+    apt: 
+      name: bind9
+      update_cache: yes
+
+  - name: Start bind9, if not started
+    service:
+      name: bind9
+      state: started
+
+  - name: copy the named config file
+    template:
+      src: /Users/home/Documents/ica0002/roles/bind/templates/named.conf.options.j2
+      dest: /etc/bind/named.conf.options
+    notify: restart bind9    
