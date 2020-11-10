@@ -1,4 +1,4 @@
-mysql_host: 192.168.42.59
+mysql_host: 192.168.42.95
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -8,13 +8,29 @@ mysql_password: !vault |
           37666462663438393666373061343865313530626338333634646536383032653664393363636562
           6161376238366439350a343939343765376530646630336663623863643330653361653238306432
           6230
+
+domain: vglax
+fqdn: vglax.io
+
 dns_forwarders:
   - 1.1.1.1
   - 8.8.8.8
   - 9.9.9.9
-  - 9.9.9.10
-local_network: 192.168.42.0/24
-localhost: 127.0.0.0/8
-vm1_ip: 192.168.42.138
-vm1_ip: 192.168.42.59
-domain: vglax.io
+  - 9.9.9.10 
+
+reverse_domain: 
+  - 138.42.168.192.in-addr.arpa
+
+dns_record:
+ - name: vugarg-2
+   type: A
+   ipaddress: 192.168.42.95
+ - name: vugarg-1
+   type: A
+   ipaddress: 192.168.42.138
+
+acl: ica0002acl
+
+ica0002acl:
+  - 127.0.0.1
+  - 192.168.42.0/24

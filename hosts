@@ -10,3 +10,6 @@ vugarg-2
 
 [web_servers]
 vugarg-1
+
+[dns_servers]
+vugarg-2
