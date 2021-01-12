@@ -1,16 +1,6 @@
 ---
-  - name: DNS Server
-    hosts: db_servers
-    tasks:
-      - debug: msg="REPLY from {{ ansible_facts['nodename'] }}..."
-    roles:
-      - bind
-    become: yes
-
-  - name: Change resolv.conf
-    hosts: all
-    tasks:
-      - template:
-          src: /Users/home/Documents/ica0002/roles/bind/templates/resolv.conf.j2
-          dest: /etc/resolv.conf
-    become: yes
+- name: DNS server
+  hosts: all
+  roles:
+    - bind
+  become: yes

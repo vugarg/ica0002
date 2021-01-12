@@ -1,7 +1,64 @@
-vugarg-1 ansible_host=193.40.156.86 ansible_port=8122 ansible_user=ubuntu ansible_python_interpreter=python3
-
-[web_servers]
-vugarg-1
+vugarg-1 ansible_host=193.40.156.86 ansible_port=7322 ansible_ssh_user=ubuntu ansible_python_interpreter=python3
+vugarg-2 ansible_host=193.40.156.86 ansible_port=7822 ansible_ssh_user=ubuntu ansible_python_interpreter=python3
+vugarg-3 ansible_host=193.40.156.86 ansible_port=7222 ansible_ssh_user=ubuntu ansible_python_interpreter=python3
 
 [app_servers]
 vugarg-1
+vugarg-2
+vugarg-3
+
+
+[dns_masters]
+vugarg-3
+
+[dns_slaves]
+vugarg-1
+vugarg-2
+
+
+[dns_servers:children]
+dns_masters
+dns_slaves
+
+[prometheus]
+vugarg-1
+vugarg-2
+vugarg-3
+
+
+[db_servers]
+vugarg-1 mysql_server_id=80
+vugarg-2 mysql_server_id=24
+
+[web_servers]
+vugarg-1
+vugarg-2
+
+[node_exporters]
+vugarg-1
+vugarg-2
+
+[grafana]
+vugarg-3
+
+[influxdb]
+vugarg-3
+
+[pinger]
+vugarg-3
+
+[docker_servers]
+vugarg-1
+vugarg-2
+vugarg-3
+
+[haproxy]
+vugarg-1
+vugarg-2
+
+[application_vms]
+vugarg-1
+vugarg-2
+
+[internal_vm]
+vugarg-3

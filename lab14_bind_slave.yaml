@@ -1,0 +1,15 @@
+---
+- name: Setup
+  hosts: all
+  become: yes
+  roles:
+    - init
+
+- name: DNS server
+  hosts: dns_servers
+  gather_facts: yes
+  roles:
+    - bind
+    - bind_exporter
+  become: yes
+  tags: bind

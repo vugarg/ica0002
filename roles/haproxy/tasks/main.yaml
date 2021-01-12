@@ -1,0 +1,40 @@
+---
+- name: Install Haproxy
+  apt: 
+    name: haproxy
+    state: latest
+
+- name: HAProxy config
+  template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+  notify: 
+    - restart haproxy
+
+- name: Install docker package
+  apt:
+    name: 
+      - docker.io
+      - python3-docker
+
+- name: Docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: HAProxy exporter container for vms
+  docker_container:
+    name: haproxy_exporter
+    image: quay.io/prometheus/haproxy-exporter:v0.9.0
+    published_ports:
+      - "{{ docker_haproxy_exporter_port }}:{{ docker_haproxy_exporter_port }}" 
+    command: --haproxy.scrape-uri="http://{{inventory_hostname}}.{{ fqdn }}:{{haproxy_port}}/haproxy?stats;csv"
+    restart_policy: always 
+
+- name: Start service HAProxy, if not started
+  service:
+    name: haproxy
+    state: started
+    enabled: yes
+  become: yes

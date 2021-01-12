@@ -1,14 +1,14 @@
 ---
-- name: Web App
-  hosts: app_servers
-  roles:
-    - uwsgi
-    - agama
-    - nginx
-  become: yes
+  - name: Database server
+    hosts: db_servers
+    roles:
+      - mysql
+    become: yes
 
-- name: Database Server
-  hosts: db_servers
-  roles: 
-    - mysql
-  become: yes
+  - name: Web app
+    hosts: app_servers
+    roles:
+      - agama
+      - uwsgi
+      - nginx
+    become: yes
