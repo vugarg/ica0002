@@ -4,13 +4,13 @@
     name: grafana
     gid: 472
     
-- name: Grafana directory
-  file:
-    name: /opt/docker/grafana
-    state: directory
-    owner: "472"
-    group: "472"
-    recurse: true
+#- name: Grafana directory
+ # file:
+  #  name: /opt/docker/grafana
+   # state: directory
+    #owner: "472"
+    #group: "472"
+    #recurse: true
 
 - name: Grafana container
   docker_container:

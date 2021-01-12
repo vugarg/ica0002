@@ -29,6 +29,7 @@
     image: agama
     env:
       AGAMA_DATABASE_URI: mysql://{{ mysql_user }}:{{ mysql_password }}@{{ mysql_host }}/{{ mysql_database }}
+    dns_search_domains: "vugarg-2.vglax.io"
     ports:
       - "{{ docker_agama_port }}:8000"
     restart_policy: always

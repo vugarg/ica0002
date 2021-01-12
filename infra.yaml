@@ -58,10 +58,10 @@
     - users
     #- grafana
     - docker
+    - grafana_docker
     - nginx_exporter
     - influxdb
     - rsyslog
-    - grafana_docker
     - backup
     - pinger
   tags:
