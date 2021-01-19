@@ -27,13 +27,13 @@
     mode: '0400'
   when: inventory_hostname == "vugarg-2"
   
-- name: Grafana directory
-  file:
-    name: /opt/docker/grafana
-    state: directory
-    owner: "472"
-    group: "472"
-    recurse: true
+#- name: Grafana directory
+ # file:
+  #  name: /opt/docker/grafana
+   # state: directory
+    #owner: "472"
+    #group: "472"
+    #recurse: true
 
 - name: Add the user to the Grafana group on the vugarg-3
   user:
