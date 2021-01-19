@@ -5,4 +5,7 @@
     enabled: yes
 
 - name: Reload rndc
-  shell: rndc reload
+  shell: rndc reload 
+
+- name: Sync rndc
+  shell: rndc sync

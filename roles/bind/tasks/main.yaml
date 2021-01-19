@@ -15,7 +15,7 @@
 - name: Bind zone config
   template:
     src: ../templates/named.conf.local.j2
-    dest: /etc/bind/named.conf.local     
+    dest: /etc/bind/named.conf.local    
   notify: restart bind9
   when: inventory_hostname in groups['dns_masters']
 
@@ -30,7 +30,10 @@
   template:
     src: ../templates/db.vglax.j2
     dest: /var/lib/bind/db.vglax.io
-  notify: Reload rndc
+    force: no
+  notify: 
+    - Reload rndc
+    - Sync rndc
   when: inventory_hostname in groups['dns_masters']
   
 - name: Execute handlers
